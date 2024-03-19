@@ -75,3 +75,34 @@ table {
     text-transform: uppercase;
   }
   
+  @media screen and (max-width: 600px) {
+    table {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      table-layout: fixed;
+    }
+    
+.up{
+  width: 100%;
+  height: auto;
+  background-color: rgb(25, 4, 132);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  justify-content: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  color: white;
+
+}
+.divvvvv {
+  
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+
+  }

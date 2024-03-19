@@ -10,7 +10,7 @@
     <div class="container">
         <div class="box">
             <div style="margin-bottom: 15px;" class="up">
-                <div style="width: auto;height: auto;">
+                <div class="divvvvv" style="width: auto;height: auto;">
                     <label for="sortField">Sort by:</label>
                     <select style="border: none;border-radius: 6px;background-color: white;padding: 5px;" class="drop" id="sortField">
                       <option value="name">Name</option>
@@ -19,20 +19,19 @@
                       <option value="totalMarks">Total Marks</option>
                     </select>
                 </div>
-                <div style="width: auto;height: auto;">
+                <div class="divvvvv" style="width: auto;height: auto;">
                     <form>
                         <label for="searchTerm">Search:</label>
                         <input id="searchTerm" style="border: none;border-radius: 6px;background-color: white;padding: 5px;" placeholder="Search" type="text">
+
                     </form>
-                    
                 </div>
-                <div style="width: auto;height: auto;">
+                <div class="divvvvv" style="width: auto;height: auto;">
                     <form>
                         <label for="minMarks">Minimum Marks:</label>
                         <input style="border: none;border-radius: 6px;background-color: white;padding: 5px;" type="number" id="minMarks">
-                        <button id="filterButton" style="border: none;border-radius: 6px;background-color: white;padding: 5px;" type="button">Filter</button>
+                        <button id="filterButton" style="border: none;border-radius: 6px;background-color: white;padding: 5px;" type="button" onclick="filter()">Filter</button>
                     </form>
-                    
                 </div>
             </div>
             <div class="down">

@@ -1,8 +1,8 @@
 const students = [
-    { name: 'Alice', age: 20, department: 'Computer Science', totalMarks: 85 },
+    { name: 'Alice', age: 70, department: 'Computer Science', totalMarks: 85 },
     { name: 'Bob', age: 22, department: 'Mathematics', totalMarks: 78 },
     { name: 'Charlie', age: 21, department: 'Physics', totalMarks: 92 },
-    { name: 'David', age: 23, department: 'Biology', totalMarks: 70 },
+    { name: 'David', age: 23, department: 'Biology', totalMarks: 100 },
     { name: 'Eve', age: 24, department: 'Chemistry', totalMarks: 88 },
     { name: 'Frank', age: 25, department: 'Geology', totalMarks: 95 },
     { name: 'Grace', age: 26, department: 'History', totalMarks: 82 },
@@ -13,7 +13,7 @@ const students = [
 
 const tableBody = document.querySelector('#studentTable tbody');
 
-function renderTable(students) {
+function displayTable(students) {
     tableBody.innerHTML = '';
     students.forEach(student => {
         const row = document.createElement('tr');
@@ -27,20 +27,26 @@ function renderTable(students) {
     });
 }
 
-renderTable(students);
+displayTable(students);
 
+
+
+// sort
 const sortField = document.getElementById('sortField');
 
 sortField.addEventListener('change', function () {
+    const sortBy = this.value; 
     const sortedStudents = students.slice().sort((a, b) => {
-        if (a[this.value] < b[this.value]) return -1;
-        if (a[this.value] > b[this.value]) return 1;
-        return 0;
+        if (sortBy === 'age' || sortBy === 'totalMarks') {
+            return a[sortBy] - b[sortBy]; 
+        } else {
+            return a[sortBy].localeCompare(b[sortBy]); 
+        }
     });
-    renderTable(sortedStudents);
+    displayTable(sortedStudents);
 });
 
-
+// search
 const searchTermInput = document.getElementById('searchTerm');
 
 searchTermInput.addEventListener('input', function () {
@@ -49,19 +55,12 @@ searchTermInput.addEventListener('input', function () {
         student.name.toLowerCase().includes(searchTerm) ||
         student.department.toLowerCase().includes(searchTerm)
     );
-    renderTable(filteredStudents);
+    displayTable(filteredStudents);
 });
 
-
-const filterButton = document.getElementById('filterButton');
-const minMarksInput = document.getElementById('minMarks');
-
-filterButton.addEventListener('click', function () {
-    const minMarks = parseInt(minMarksInput.value);
-    if (!isNaN(minMarks)) {
-        const filteredStudents = students.filter(student => student.totalMarks >= minMarks);
-        renderTable(filteredStudents);
-    } else {
-        alert('Please enter a valid minimum marks value.');
-    }
-});
+// filter
+function filter() {
+    const minMarksInput = document.getElementById('minMarks').value;
+    const filteredStudents = students.filter(student => student.totalMarks >= minMarksInput);
+    displayTable(filteredStudents);
+}
